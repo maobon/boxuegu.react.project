@@ -9,8 +9,11 @@ import React from "react";
 import {HashRouter, Route} from "react-router-dom";
 // 引入样式文件
 import "./less/index.less";
-// 引入子模块
+// 引入自己的模块
 import Login from "./components/Login/Login";
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Index from "./components/Index/Index";
 
 class App extends React.Component {
 
@@ -22,7 +25,12 @@ class App extends React.Component {
         return (
             <HashRouter>
                 <div>
-                    <Route path="/login" component={Login}/>
+                    <Header/>
+                    <Sidebar/>
+                    <div>
+                        <Route path="/" component={Index}/>
+                        <Route path="/Login" component={Login}/>
+                    </div>
                 </div>
             </HashRouter>
         )
