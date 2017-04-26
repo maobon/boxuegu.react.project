@@ -14,7 +14,10 @@ class Sidebar extends React.Component {
             <div className="aside">
 
                 <div className="profile">
-
+                    <div className="avatar img-circle">
+                        <img src="http://static.botue.com/images/avatar/58d2967fbbb5e.jpg"/>
+                    </div>
+                    <h4>admin</h4>
                 </div>
 
                 <div className="navs">
