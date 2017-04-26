@@ -64,7 +64,9 @@ const obj = {
                 // 表示会将原来代码中对图片的引入url中加入随机的值
                 // 原来: url('./a.jpg')
                 // 处理后: url('./a.jpg?slfkdaljfalskdfaf')
-                loader: 'file-loader?name=./img/[name].[ext]?[hash]'
+
+                loader: 'file-loader?name=./images/[name].[ext]?[hash]'
+                // loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
             },
             {
                 // 对font字体文件进行处理
