@@ -6,7 +6,8 @@
 
 import React from "react";
 import ReactDom from "react-dom";
-// 引入bootstrap样式
+// 引入静态资源
+import "jquery";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 // 引入App模块
