@@ -26,7 +26,7 @@ class Login extends React.Component {
                 <div className="login-wrap">
 
                     <div className="avatar">
-                        <img src="./images/apps.png" className="img-circle" alt=""/>
+                        <img src="../../images/apps.png" className="img-circle" alt=""/>
                     </div>
 
                     <form id="loginForm" className="col-xs-offset-1 col-xs-10">
