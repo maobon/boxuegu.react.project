@@ -1,8 +1,7 @@
 /**
  * Created by xinbob on 4/26/17.
  *
- * App
- * 路由模块
+ * App 路由模块
  */
 
 import React from "react";

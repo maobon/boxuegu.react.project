@@ -6,3 +6,9 @@
     bottom: 0;
     z-index: 999;
 }
+
+.icon {
+    transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+}

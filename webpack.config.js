@@ -1,5 +1,6 @@
 /**
  * webpack config
+ * webpack 构建打包配置文件
  */
 console.log('project building...')
 
@@ -62,7 +63,8 @@ const obj = {
             jQuery: 'jquery',
             $: 'jquery'
         }),
-        //????
+        // 最终将依赖的三方js库打包为 vendor.js文件
+        // mainfest.js 为webpack打包过程中自己生成的文件
         new webpack.optimize.CommonsChunkPlugin({
             name: ['vendor', 'mainfest']
         }),

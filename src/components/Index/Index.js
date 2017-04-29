@@ -3,6 +3,7 @@
  */
 
 import React from "react";
+import "./Index.css";
 
 class Index extends React.Component {
 
@@ -47,6 +48,10 @@ class Index extends React.Component {
                                 </div>
                             </div>
 
+                            {/* photo */}
+                            <div>
+                                <img className="photo-cat" src="../../images/feature-reliable.png" alt=""/>
+                            </div>
                         </div>
                     </div>
                 </div>

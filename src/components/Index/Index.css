@@ -1,0 +1,7 @@
+.photo-cat {
+    position: relative;
+    width: 720px;
+    margin-left: -360px;
+    margin-top: 15px;
+    left: 50%;
+}
