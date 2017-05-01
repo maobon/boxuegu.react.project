@@ -6,7 +6,7 @@
 
 import React from "react";
 import $ from "jquery";
-import './TeacherMng.css'
+import "./TeacherMng.css";
 
 class TeacherMng extends React.Component {
 
@@ -14,7 +14,8 @@ class TeacherMng extends React.Component {
         super()
 
         this.state = {
-            list: []
+            list: [],
+            detailInfo: []
         }
     }
 
@@ -33,8 +34,8 @@ class TeacherMng extends React.Component {
 
     render() {
 
-        let arr = this.state.list.map(function (item, index) {
-
+        // 讲师列表
+        let arr = this.state.list.map((item, index) => {
             return (
                 <tr key={ index }>
                     <td>{ index + 1 }</td>
@@ -47,8 +48,14 @@ class TeacherMng extends React.Component {
                     <td>{ item.tc_cellphone }</td>
 
                     <td className="teacherOperation" data-tcid={ item.tc_id } data-tcstatus={ item.tc_status }>
-                        <a href="javascript:" data-toggle="modal" className="btn btn-info btn-xs">查 看</a>
+
+                        <a onClick={() => {
+                            // console.log(this)
+                            this.checkTeacherDetailInfo()
+                        }} href="#teacherModal" data-toggle="modal" className="btn btn-info btn-xs">查 看</a>
+
                         <a href="javascript:" className="btn btn-info btn-xs">编 辑</a>
+
                         <a href="javascript:" className="btn btn-warning btn-xs">
                             { item.tc_status == 0 ? '注 销' : '启 用' }
                         </a>
@@ -56,8 +63,6 @@ class TeacherMng extends React.Component {
                 </tr>
             )
         })
-
-        console.log(arr)
 
         return (
             // 外层容器样式
@@ -113,22 +118,108 @@ class TeacherMng extends React.Component {
                     </div>
 
                     {/* Bootstrap test */}
-                    {/*<button type="button" className="btn btn-primary" data-toggle="modal"*/}
-                    {/*data-target=".bs-example-modal-lg">Large modal*/}
-                    {/*</button>*/}
 
-                    {/*<div className="modal fade bs-example-modal-lg" tabIndex="-1" role="dialog"*/}
-                    {/*aria-labelledby="myLargeModalLabel">*/}
-                    {/*<div className="modal-dialog modal-lg" role="document">*/}
-                    {/*<div className="modal-content">*/}
-                    {/**/}
-                    {/*</div>*/}
-                    {/*</div>*/}
-                    {/*</div>*/}
+                    <div className="modal fade" id="teacherModal">
+                        <div className="modal-dialog" style={{width: '750px'}}>
+                            <div className="panel panel-default">
+                                <div className="panel-heading">
+                                    <button type="button" className="close" data-dismiss="modal">&times;</button>
+                                    <h4 className="panel-title">讲师信息</h4>
+                                </div>
+                                <div className="panel-body">
+                                    <table className="table table-bordered table-condensed">
+                                        {this.state.detailInfo}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         )
     }
+
+    checkTeacherDetailInfo() {
+
+
+        $.ajax({
+            type: 'get',
+            url: '/api/teacher/view',
+            data: {tc_id: 6},
+            dataType: 'json',
+            success: (res) => {
+
+                if (res.code == 200) {
+
+                    this.state.detailInfo = []
+
+                    // 渲染前可以调整数据格式
+                    res.result.tc_hometown = res.result.tc_hometown.split("|").join(" ");
+
+                    const item = res.result
+
+                    let headPic = null
+                    if (item.tc_avatar) {
+                        headPic = <img src={item.tc_avatar} alt=""/>
+                    } else {
+                        headPic = <img src="../../images/default.png" alt=""/>
+                    }
+
+                    this.state.detailInfo.push(
+                        <tbody id="teacherDetailInfo">
+                        <tr>
+                            <th>姓名:</th>
+                            <td>{item.tc_name}</td>
+                            <th>职位:</th>
+                            <td colSpan={3}>讲师</td>
+                            <td rowSpan={4} width="128">
+                                <div className="avatar">
+                                    {headPic}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>花名:</th>
+                            <td>{item.tc_roster}</td>
+                            <th>出生日期:</th>
+                            <td colSpan={3}>{item.tc_birthday}</td>
+                        </tr>
+                        <tr>
+                            <th>性别:</th>
+                            <td>
+                                {item.tc_gender == 1 ? '女' : '男'}
+                            </td>
+                            <th>入职日期:</th>
+                            <td colSpan={3}>{item.tc_join_date}</td>
+                        </tr>
+                        <tr>
+                            <th>手机号码:</th>
+                            <td colSpan={2}>{item.tc_cellphone}</td>
+                            <th>邮箱:</th>
+                            <td colSpan={2}>{item.tc_email}</td>
+                        </tr>
+                        <tr>
+                            <th>籍贯:</th>
+                            <td colSpan={6}>{item.tc_hometown}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={7}>
+                                <div className="introduce">
+                                    <p>{item.tc_introduce}</p>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    )
+
+                    this.setState({})
+                }
+            }
+        });
+
+    }
+
 }
 
 export default TeacherMng
