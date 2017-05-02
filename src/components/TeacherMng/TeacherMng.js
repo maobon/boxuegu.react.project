@@ -49,13 +49,15 @@ class TeacherMng extends React.Component {
 
                     <td className="teacherOperation" data-tcid={ item.tc_id } data-tcstatus={ item.tc_status }>
 
+                        {/* 查看该位讲师详情 */}
                         <a onClick={() => {
-                            // console.log(this)
-                            this.checkTeacherDetailInfo()
+                            this.checkTeacherDetailInfo(item.tc_id)
                         }} href="#teacherModal" data-toggle="modal" className="btn btn-info btn-xs">查 看</a>
 
+                        {/* 编辑该位讲师 */}
                         <a href="javascript:" className="btn btn-info btn-xs">编 辑</a>
 
+                        {/* */}
                         <a href="javascript:" className="btn btn-warning btn-xs">
                             { item.tc_status == 0 ? '注 销' : '启 用' }
                         </a>
@@ -107,18 +109,14 @@ class TeacherMng extends React.Component {
                                 </thead>
 
                                 <tbody id="teacherList">
-
-                                {/*hahahha*/}
                                 {arr}
-
                                 </tbody>
                             </table>
                         </div>
 
                     </div>
 
-                    {/* Bootstrap test */}
-
+                    {/* 查看讲师详情模态框 */}
                     <div className="modal fade" id="teacherModal">
                         <div className="modal-dialog" style={{width: '750px'}}>
                             <div className="panel panel-default">
@@ -140,76 +138,88 @@ class TeacherMng extends React.Component {
         )
     }
 
-    checkTeacherDetailInfo() {
-
+    /**
+     * 查看讲师详细信息
+     * @param teacherId
+     */
+    checkTeacherDetailInfo(teacherId) {
 
         $.ajax({
             type: 'get',
             url: '/api/teacher/view',
-            data: {tc_id: 6},
+            data: {tc_id: teacherId},
             dataType: 'json',
             success: (res) => {
 
                 if (res.code == 200) {
-
+                    // clean detai info
                     this.state.detailInfo = []
-
-                    // 渲染前可以调整数据格式
+                    // 调整数据格式
                     res.result.tc_hometown = res.result.tc_hometown.split("|").join(" ");
 
                     const item = res.result
 
+                    // 是否有头像
                     let headPic = null
                     if (item.tc_avatar) {
-                        headPic = <img src={item.tc_avatar} alt=""/>
+                        headPic = <img src={ item.tc_avatar } alt=""/>
                     } else {
                         headPic = <img src="../../images/default.png" alt=""/>
                     }
 
+                    // 渲染数据到tbody
                     this.state.detailInfo.push(
                         <tbody id="teacherDetailInfo">
+
                         <tr>
                             <th>姓名:</th>
-                            <td>{item.tc_name}</td>
+                            <td>{ item.tc_name }</td>
                             <th>职位:</th>
                             <td colSpan={3}>讲师</td>
                             <td rowSpan={4} width="128">
                                 <div className="avatar">
-                                    {headPic}
+                                    { headPic }
                                 </div>
                             </td>
                         </tr>
+
                         <tr>
                             <th>花名:</th>
-                            <td>{item.tc_roster}</td>
+                            <td>{ item.tc_roster }</td>
                             <th>出生日期:</th>
-                            <td colSpan={3}>{item.tc_birthday}</td>
+                            <td colSpan={3}>{ item.tc_birthday }</td>
                         </tr>
+
                         <tr>
                             <th>性别:</th>
                             <td>
-                                {item.tc_gender == 1 ? '女' : '男'}
+                                { item.tc_gender == 1 ? '女' : '男' }
                             </td>
                             <th>入职日期:</th>
-                            <td colSpan={3}>{item.tc_join_date}</td>
+                            <td colSpan={3}>{ item.tc_join_date }</td>
                         </tr>
+
                         <tr>
                             <th>手机号码:</th>
-                            <td colSpan={2}>{item.tc_cellphone}</td>
+                            <td colSpan={2}>{ item.tc_cellphone }</td>
                             <th>邮箱:</th>
-                            <td colSpan={2}>{item.tc_email}</td>
+                            <td colSpan={2}>{ item.tc_email }</td>
                         </tr>
+
                         <tr>
                             <th>籍贯:</th>
-                            <td colSpan={6}>{item.tc_hometown}</td>
+                            <td colSpan={6}>{ item.tc_hometown }</td>
                         </tr>
+
                         <tr>
                             <td colSpan={7}>
                                 <div className="introduce">
-                                    <p>{item.tc_introduce}</p>
+                                    {/* 此处直接输出HTML标签 */}
+                                    <p dangerouslySetInnerHTML={{__html: item.tc_introduce}}></p>
                                 </div>
                             </td>
                         </tr>
+
                         </tbody>
                     )
 
