@@ -13,7 +13,8 @@ import Login from "./components/Login/Login";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Index from "./components/Index/Index";
-import TeacherMng from './components/TeacherMng/TeacherMng'
+import TeacherMng from "./components/TeacherMng/TeacherMng";
+import TeacherEdt from "./components/TeacherEdt/TeacherEdt";
 
 class App extends React.Component {
 
@@ -31,6 +32,7 @@ class App extends React.Component {
                         <Route path="/Index" component={Index}/>
                         <Route path="/Login" component={Login}/>
                         <Route path="/TeacherMng" component={TeacherMng}/>
+                        <Route path="/TeacherEdt" component={TeacherEdt}/>
                     </div>
                 </div>
             </HashRouter>
