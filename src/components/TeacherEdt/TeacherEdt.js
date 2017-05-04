@@ -92,8 +92,12 @@ class TeacherEdt extends React.Component {
                                         {tc_id_hidden}
 
                                         <input data-required data-description="tcName" data-describedby="tcNameInfo"
-                                               name="tc_name" value={ this.state.data.tc_name }
-                                               type="text" className="form-control input-sm" placeholder="讲师名称"/>
+                                               name="tc_name"
+                                               value={ this.state.data.tc_name }
+                                               onChange={(event) => {
+                                                   this.state.data.tc_name = event.target.value
+                                                   this.setState({})
+                                               }} type="text" className="form-control input-sm" placeholder="讲师名称"/>
                                     </div>
                                     <div className="col-xs-2" id="tcNameInfo"></div>
                                 </div>
@@ -107,7 +111,12 @@ class TeacherEdt extends React.Component {
                                     <div className="col-xs-4">
                                         <input data-required
                                                data-description="joinDate" data-describedby="tcJoinDateInfo"
-                                               name="tc_join_date" value={ this.state.data.tc_join_date }
+                                               name="tc_join_date"
+                                               value={ this.state.data.tc_join_date }
+                                               onChange={(event) => {
+                                                   this.state.data.tc_join_date = event.target.value
+                                                   this.setState({})
+                                               }}
                                                data-date-language="zh-CN" data-provide="datepicker"
                                                data-date-format="yyyy-mm-dd"
                                                data-date-end-date="0d"
@@ -121,7 +130,11 @@ class TeacherEdt extends React.Component {
                                     <label className="col-xs-3 control-label">类型</label>
                                     <div className="col-xs-2">
                                         <select name="tc_type" className="form-control input-sm"
-                                                value={this.state.data.tc_type}>
+                                                value={this.state.data.tc_type}
+                                                onChange={(event) => {
+                                                    this.state.data.tc_type = event.target.value
+                                                    this.setState({})
+                                                }}>
                                             <option value="1">讲师</option>
                                             <option value="0">管理员</option>
                                         </select>
@@ -134,11 +147,19 @@ class TeacherEdt extends React.Component {
                                     <div className="col-xs-4">
                                         <label className="radio-inline">
                                             <input type="radio" name="tc_gender" value="0"
-                                                   checked={this.state.data.tc_gender == '0'}/> 男
+                                                   checked={this.state.data.tc_gender == '0'}
+                                                   onChange={(event) => {
+                                                       this.state.data.tc_gender = event.target.value
+                                                       this.setState({})
+                                                   }}/> 男
                                         </label>
                                         <label className="radio-inline">
                                             <input type="radio" name="tc_gender" value="1"
-                                                   checked={this.state.data.tc_gender == '1'}/> 女
+                                                   checked={this.state.data.tc_gender == '1'}
+                                                   onChange={(event) => {
+                                                       this.state.data.tc_gender = event.target.value
+                                                       this.setState({})
+                                                   }}/> 女
                                         </label>
                                     </div>
 
@@ -148,7 +169,12 @@ class TeacherEdt extends React.Component {
                                 <div className="form-group">
                                     <div className="col-xs-7">
                                         <input type="submit" value="提 交"
-                                               className="btn btn-success btn-sm pull-right"/>
+                                               className="btn btn-success btn-sm pull-right"
+                                               onClick={(e) => {
+                                                   e.preventDefault()
+                                                   this.doSubmit()
+                                               }}
+                                        />
                                     </div>
                                 </div>
 
@@ -159,6 +185,10 @@ class TeacherEdt extends React.Component {
                 </div>
             </div>
         )
+    }
+
+    doSubmit() {
+        console.log(this.state.data)
     }
 }
 
