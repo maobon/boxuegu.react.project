@@ -7,7 +7,7 @@
 
 import React from "react";
 import $ from "jquery";
-import "bootstrap-datepicker";
+import DateTimeField from "react-bootstrap-datetimepicker";
 import "./TeacherEdt.css";
 
 class TeacherEdt extends React.Component {
@@ -123,22 +123,17 @@ class TeacherEdt extends React.Component {
                                     <label className="col-xs-3 control-label">入职时间</label>
                                     <div className="col-xs-4">
 
-                                        {/* 入职时间 tc_join_date (bootstrap插件) */}
-                                        <input data-required
-                                               data-description="joinDate" data-describedby="tcJoinDateInfo"
-                                               name="tc_join_date"
-                                               value={ this.state.data.tc_join_date }
-                                               data-date-language="zh-CN" data-provide="datepicker"
-                                               data-date-format="yyyy-mm-dd"
-                                               data-date-end-date="0d"
-                                               type="text" className="form-control input-sm"
-                                               changeDate={console.log(111111)}
-                                               changeYear={console.log(222222)}
-                                               changeMonth={console.log(333333)}
+                                        {/* tc_join_date */}
+                                        <DateTimeField dateTime="2017-05-05"
+                                                       format="YYYY-MM-DD" inputFormat="YYYY-MM-DD"
+                                                       onChange={(newDate) => {
+                                                           // console.log(newDate)
+                                                           // this.setState({data: {tc_join_date: newDate}})
+                                                           this.state.data.tc_join_date = newDate
+                                                           this.setState({})
+                                                       }}
                                         />
-
                                     </div>
-                                    <div className="col-xs-2" id="tcJoinDateInfo"></div>
                                 </div>
 
                                 <div className="form-group">
