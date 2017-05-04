@@ -13,7 +13,7 @@ import "./TeacherEdt.css";
 class TeacherEdt extends React.Component {
 
     constructor() {
-        super()
+        super();
 
         this.state = {
             title: '',
@@ -25,32 +25,33 @@ class TeacherEdt extends React.Component {
                 tc_type: ''
             }
         }
-
     }
 
     componentWillMount() {
         // 获取传递过来的props中的参数 不能在constructor中获取
-        let teacherId = this.props.match.params.id
+        let teacherId = this.props.match.params.id;
 
-        $.ajax({
-            type: 'post',
-            url: '/api/teacher/edit',
-            data: {tc_id: teacherId},
-            dataType: 'json',
-            success: (res) => {
-                if (res.code == 200) {
-                    this.state.title = '编辑讲师'
-                    this.state.data = res.result
-                    this.setState({})
+        if (teacherId) {
+            $.ajax({
+                type: 'post',
+                url: '/api/teacher/edit',
+                data: {tc_id: teacherId},
+                dataType: 'json',
+                success: (res) => {
+                    if (res.code == 200) {
+                        this.state.title = '编辑讲师';
+                        this.state.data = res.result;
+                        this.setState({})
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     render() {
 
-        let tc_id_hidden = null
-        let tc_pass_dom = null
+        let tc_id_hidden = null;
+        let tc_pass_dom = null;
 
         if (this.state.data.tc_id) {
             tc_id_hidden = <input type="hidden" name="tc_id" value={this.state.data.tc_id}/>
@@ -96,7 +97,7 @@ class TeacherEdt extends React.Component {
                                                name="tc_name"
                                                value={ this.state.data.tc_name }
                                                onChange={(event) => {
-                                                   this.state.data.tc_name = event.target.value
+                                                   this.state.data.tc_name = event.target.value;
                                                    this.setState({})
                                                }} type="text" className="form-control input-sm" placeholder="讲师名称"/>
                                     </div>
@@ -115,7 +116,7 @@ class TeacherEdt extends React.Component {
                                                name="tc_join_date"
                                                value={ this.state.data.tc_join_date }
                                                onChange={(event) => {
-                                                   this.state.data.tc_join_date = event.target.value
+                                                   this.state.data.tc_join_date = event.target.value;
                                                    this.setState({})
                                                }}
                                                data-date-language="zh-CN" data-provide="datepicker"
@@ -133,7 +134,7 @@ class TeacherEdt extends React.Component {
                                         <select name="tc_type" className="form-control input-sm"
                                                 value={this.state.data.tc_type}
                                                 onChange={(event) => {
-                                                    this.state.data.tc_type = event.target.value
+                                                    this.state.data.tc_type = event.target.value;
                                                     this.setState({})
                                                 }}>
                                             <option value="1">讲师</option>
@@ -150,7 +151,7 @@ class TeacherEdt extends React.Component {
                                             <input type="radio" name="tc_gender" value="0"
                                                    checked={this.state.data.tc_gender == '0'}
                                                    onChange={(event) => {
-                                                       this.state.data.tc_gender = event.target.value
+                                                       this.state.data.tc_gender = event.target.value;
                                                        this.setState({})
                                                    }}/> 男
                                         </label>
@@ -158,7 +159,7 @@ class TeacherEdt extends React.Component {
                                             <input type="radio" name="tc_gender" value="1"
                                                    checked={this.state.data.tc_gender == '1'}
                                                    onChange={(event) => {
-                                                       this.state.data.tc_gender = event.target.value
+                                                       this.state.data.tc_gender = event.target.value;
                                                        this.setState({})
                                                    }}/> 女
                                         </label>
@@ -172,7 +173,7 @@ class TeacherEdt extends React.Component {
                                         <input type="submit" value="提 交"
                                                className="btn btn-success btn-sm pull-right btn-submit"
                                                onClick={(e) => {
-                                                   e.preventDefault()
+                                                   e.preventDefault();
                                                    this.doSubmit()
                                                }}
                                         />

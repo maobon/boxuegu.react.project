@@ -11,7 +11,7 @@ import "./TeacherMng.css";
 class TeacherMng extends React.Component {
 
     constructor() {
-        super()
+        super();
 
         this.state = {
             list: [],
@@ -26,7 +26,7 @@ class TeacherMng extends React.Component {
             dataType: 'json',
             success: (res) => {
                 // console.log(res.result)
-                this.state.list = res.result
+                this.state.list = res.result;
                 this.setState({})
             }
         });
@@ -47,6 +47,7 @@ class TeacherMng extends React.Component {
                     </td>
                     <td>{ item.tc_cellphone }</td>
 
+                    {/* Operations */}
                     <td className="teacherOperation" data-tcid={ item.tc_id } data-tcstatus={ item.tc_status }>
 
                         {/* 查看该位讲师详情 */}
@@ -61,10 +62,11 @@ class TeacherMng extends React.Component {
                         <a href="javascript:" className="btn btn-warning btn-xs">
                             { item.tc_status == 0 ? '注 销' : '启 用' }
                         </a>
+
                     </td>
                 </tr>
             )
-        })
+        });
 
         return (
             // 外层容器样式
@@ -80,7 +82,7 @@ class TeacherMng extends React.Component {
 
                         {/* page title */}
                         <div className="page-title">
-                            <a href="/teacher/teacher_add" className="btn btn-success btn-sm pull-right">添加讲师</a>
+                            <a href="#/TeacherEdt" className="btn btn-success btn-sm pull-right">添加讲师</a>
                         </div>
 
                         {/* teacher list */}
@@ -155,14 +157,14 @@ class TeacherMng extends React.Component {
 
                 if (res.code == 200) {
                     // clean detai info
-                    this.state.detailInfo = []
+                    this.state.detailInfo = [];
                     // 调整数据格式
                     res.result.tc_hometown = res.result.tc_hometown.split("|").join(" ");
 
-                    const item = res.result
+                    const item = res.result;
 
                     // 是否有头像
-                    let headPic = null
+                    let headPic = null;
                     if (item.tc_avatar) {
                         headPic = <img src={ item.tc_avatar } alt=""/>
                     } else {
@@ -223,7 +225,7 @@ class TeacherMng extends React.Component {
                         </tr>
 
                         </tbody>
-                    )
+                    );
 
                     this.setState({})
                 }

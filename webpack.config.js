@@ -2,14 +2,14 @@
  * webpack config
  * webpack 构建打包配置文件
  */
-console.log('project building...')
+console.log('project building...');
 
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-const HTMLPlugin = require('html-webpack-plugin')
+const HTMLPlugin = require('html-webpack-plugin');
 
 const obj = {
     entry: {
@@ -77,6 +77,6 @@ const obj = {
             }
         ])
     ]
-}
+};
 
-module.exports = obj
+module.exports = obj;

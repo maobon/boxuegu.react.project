@@ -12,7 +12,7 @@ import $ from "jquery";
 class Login extends React.Component {
 
     constructor() {
-        super()
+        super();
 
         this.state = {
             username: '',
@@ -67,11 +67,11 @@ class Login extends React.Component {
      * @param e
      */
     doSubmit(e) {
-        e.preventDefault()
-        const username = this.state.username
-        const password = this.state.password
+        e.preventDefault();
+        const username = this.state.username;
+        const password = this.state.password;
 
-        console.log(username + "//" + password)
+        console.log(username + "//" + password);
 
         // ajax 发送POST请求
         $.ajax({

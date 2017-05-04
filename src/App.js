@@ -32,6 +32,10 @@ class App extends React.Component {
                         <Route path="/Index" component={Index}/>
                         <Route path="/Login" component={Login}/>
                         <Route path="/TeacherMng" component={TeacherMng}/>
+
+                        {/* HashRouter 动态路由不知道怎么配置?? 下面写法不行 */}
+                        {/*<Route path="/TeacherEdt(/:id)" component={TeacherEdt}/>*/}
+                        <Route exact path="/TeacherEdt" component={TeacherEdt}/>
                         <Route path="/TeacherEdt/:id" component={TeacherEdt}/>
                     </div>
                 </div>

@@ -5,11 +5,11 @@
  * JSX代码 浏览器不认识 需要使用webpack打包合并转化为ES5的代码
  */
 
-const path = require('path')
+const path = require('path');
 // npm install html-webpack-plugin --save-dev
-const htmlplugin = require('html-webpack-plugin')
+const htmlplugin = require('html-webpack-plugin');
 // npm install webpack --save-dev
-const webpack = require('webpack')
+const webpack = require('webpack');
 
 const obj = {
     entry: './src/main.js', // 入口路径
@@ -85,9 +85,9 @@ const obj = {
         // 或者 webpack -p 也可以压缩 打包合并js代码处理静态资源的同时 可以对js代码进行压缩处理
         new webpack.optimize.UglifyJsPlugin()
     ]
-}
+};
 
-module.exports = obj
+module.exports = obj;
 
 
 // 所需npm下载安装的包
