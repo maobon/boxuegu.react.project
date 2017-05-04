@@ -32,7 +32,7 @@ class App extends React.Component {
                         <Route path="/Index" component={Index}/>
                         <Route path="/Login" component={Login}/>
                         <Route path="/TeacherMng" component={TeacherMng}/>
-                        <Route path="/TeacherEdt" component={TeacherEdt}/>
+                        <Route path="/TeacherEdt/:id" component={TeacherEdt}/>
                     </div>
                 </div>
             </HashRouter>

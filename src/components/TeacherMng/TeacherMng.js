@@ -54,10 +54,10 @@ class TeacherMng extends React.Component {
                             this.checkTeacherDetailInfo(item.tc_id)
                         }} href="#teacherModal" data-toggle="modal" className="btn btn-info btn-xs">查 看</a>
 
-                        {/* 编辑该位讲师 */}
-                        <a href="javascript:" className="btn btn-info btn-xs">编 辑</a>
+                        {/* 编辑该位讲师 锚点携带tc_id属性 传递给编辑页面 */}
+                        <a href={'#/TeacherEdt/' + item.tc_id} className="btn btn-info btn-xs">编 辑</a>
 
-                        {/* */}
+                        {/* 是否启用该讲师的使用权限 */}
                         <a href="javascript:" className="btn btn-warning btn-xs">
                             { item.tc_status == 0 ? '注 销' : '启 用' }
                         </a>
@@ -77,10 +77,12 @@ class TeacherMng extends React.Component {
                             <li><a href="javascript:">讲师管理</a></li>
                             <li className="active">讲师列表</li>
                         </ol>
+
                         {/* page title */}
                         <div className="page-title">
                             <a href="/teacher/teacher_add" className="btn btn-success btn-sm pull-right">添加讲师</a>
                         </div>
+
                         {/* teacher list */}
                         <div className="panel panel-default">
                             <div className="panel-body">

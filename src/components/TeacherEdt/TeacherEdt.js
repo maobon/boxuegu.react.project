@@ -8,6 +8,7 @@
 import React from "react";
 import $ from "jquery";
 import "bootstrap-datepicker";
+import "./TeacherEdt.css";
 
 class TeacherEdt extends React.Component {
 
@@ -24,22 +25,22 @@ class TeacherEdt extends React.Component {
                 tc_type: ''
             }
         }
+
     }
 
     componentWillMount() {
+        // 获取传递过来的props中的参数 不能在constructor中获取
+        let teacherId = this.props.match.params.id
+
         $.ajax({
             type: 'post',
             url: '/api/teacher/edit',
-            data: {tc_id: 2},
+            data: {tc_id: teacherId},
             dataType: 'json',
             success: (res) => {
                 if (res.code == 200) {
-
-                    console.log(res)
-
                     this.state.title = '编辑讲师'
                     this.state.data = res.result
-
                     this.setState({})
                 }
             }
@@ -169,7 +170,7 @@ class TeacherEdt extends React.Component {
                                 <div className="form-group">
                                     <div className="col-xs-7">
                                         <input type="submit" value="提 交"
-                                               className="btn btn-success btn-sm pull-right"
+                                               className="btn btn-success btn-sm pull-right btn-submit"
                                                onClick={(e) => {
                                                    e.preventDefault()
                                                    this.doSubmit()
