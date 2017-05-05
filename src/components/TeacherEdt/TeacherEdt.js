@@ -22,7 +22,6 @@ class TeacherEdt extends React.Component {
             title: '',
             data: {
                 tc_gender: '0',
-                tc_id: '',
                 tc_join_date: now,
                 tc_name: '',
                 tc_type: '1',
@@ -205,30 +204,36 @@ class TeacherEdt extends React.Component {
         )
     }
 
+    /**
+     * 提交
+     */
     doSubmit() {
-        console.log(this.state.data)
+        const params = this.state.data
 
-        // if (this.state.title == '编辑讲师') {
-        //     console.log('bianji')
-        //
-        // } else if (this.state.title == '添加讲师') {
-        //     console.log('tianjia')
-        //
-        //     let params = this.state.data
-        //
-        //     $.ajax({
-        //         type: 'post',
-        //         url: '/api/teacher/add',
-        //         dataType: 'json',
-        //         data: params,
-        //         success: function (res) {
-        //             console.log(res)
-        //         },
-        //         error: function (err) {
-        //             console.log(err)
-        //         }
-        //     })
-        // }
+        if (this.state.title == '编辑讲师') {
+            $.ajax({
+                type: 'post',
+                url: '/api/teacher/update',
+                dataType: 'json',
+                data: params,
+                success: function (res) {
+                    console.log(res)
+                    window.location.href = '#/TeacherMng'
+                }
+            })
+
+        } else if (this.state.title == '添加讲师') {
+            $.ajax({
+                type: 'post',
+                url: '/api/teacher/add',
+                dataType: 'json',
+                data: params,
+                success: function (res) {
+                    console.log(res)
+                    window.location.href = '#/TeacherMng'
+                }
+            })
+        }
     }
 }
 
