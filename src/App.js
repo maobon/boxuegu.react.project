@@ -29,7 +29,7 @@ class App extends React.Component {
                     <Header/>
                     <Sidebar/>
                     <div>
-                        <Route path="/Index" component={Index}/>
+                        <Route exact path="/" component={Index}/>
                         <Route path="/Login" component={Login}/>
                         <Route path="/TeacherMng" component={TeacherMng}/>
 

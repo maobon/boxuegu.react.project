@@ -63,7 +63,7 @@ class Login extends React.Component {
     }
 
     /**
-     *
+     * 登录请求
      * @param e
      */
     doSubmit(e) {

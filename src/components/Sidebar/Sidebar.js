@@ -5,6 +5,7 @@
 import React from "react";
 
 class Sidebar extends React.Component {
+
     constructor() {
         super()
     }
@@ -23,13 +24,13 @@ class Sidebar extends React.Component {
                 <div className="navs">
                     <ul className="list-unstyled">
                         <li>
-                            <a href="/index/index">
+                            <a href="#/">
                                 <i className="fa fa-home"></i>
                                 仪表盘
                             </a>
                         </li>
                         <li>
-                            <a href="/teacher/teacher_list">
+                            <a href="#/TeacherMng">
                                 <i className="fa fa-bell"></i>
                                 讲师管理
                             </a>

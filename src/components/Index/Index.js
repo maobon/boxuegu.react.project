@@ -1,14 +1,27 @@
 /**
  * Created by xinbob on 4/26/17.
+ *
+ * 首页 Dashbord页面
  */
 
 import React from "react";
+import $ from "jquery";
 import "./Index.css";
 
 class Index extends React.Component {
 
     constructor() {
         super()
+    }
+
+    componentWillMount() {
+        let ssid = $.cookie('PHPSESSID')
+        console.log(ssid)
+
+        if (!ssid) {
+            window.location.href = '#/Login'
+            return
+        }
     }
 
     render() {

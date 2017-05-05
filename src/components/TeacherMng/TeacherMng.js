@@ -20,6 +20,12 @@ class TeacherMng extends React.Component {
     }
 
     componentWillMount() {
+        let ssid = $.cookie('PHPSESSID')
+        if (!ssid) {
+            window.location.href = '#/Login'
+            return
+        }
+
         $.ajax({
             type: 'get',
             url: '/api/teacher',
