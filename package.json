@@ -19,7 +19,7 @@
     "bootstrap": "^3.3.7",
     "browser-sync": "^2.18.8",
     "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.0",
+    "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "font-awesome": "^4.7.0",
@@ -36,6 +36,6 @@
     "react-router-dom": "^4.1.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
-    "webpack": "^2.4.1"
+    "webpack": "^2.5.0"
   }
 }
