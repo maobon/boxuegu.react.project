@@ -8,6 +8,7 @@
 import React from "react";
 import $ from "jquery";
 import DateTimeField from "react-bootstrap-datetimepicker";
+import moment from "moment";
 import "./TeacherEdt.css";
 
 class TeacherEdt extends React.Component {
@@ -15,12 +16,14 @@ class TeacherEdt extends React.Component {
     constructor() {
         super();
 
+        const now = moment().format('YYYY-MM-DD');
+
         this.state = {
             title: '',
             data: {
                 tc_gender: '0',
                 tc_id: '',
-                tc_join_date: '',
+                tc_join_date: now,
                 tc_name: '',
                 tc_type: '1',
                 tc_pass: ''
@@ -47,7 +50,7 @@ class TeacherEdt extends React.Component {
                 }
             });
         } else {
-            this.state.title = '添加讲师'
+            this.state.title = '添加讲师';
             this.setState({})
         }
     }
@@ -71,7 +74,7 @@ class TeacherEdt extends React.Component {
                                data-description='tcPass' data-describedby='tcPassInfo'
                                name="tc_pass" type="password" className="form-control input-sm"
                                onChange={(event) => {
-                                   this.state.data.tc_pass = event.target.value
+                                   this.state.data.tc_pass = event.target.value;
                                    this.setState({})
                                }}
                         />
@@ -123,13 +126,13 @@ class TeacherEdt extends React.Component {
                                     <label className="col-xs-3 control-label">入职时间</label>
                                     <div className="col-xs-4">
 
-                                        {/* tc_join_date */}
-                                        <DateTimeField dateTime="2017-05-05"
+                                        {/* tc_join_date React-bootstrap-datetimerpicker (日期选择插件) */}
+                                        <DateTimeField dateTime={this.state.data.tc_join_date}
                                                        format="YYYY-MM-DD" inputFormat="YYYY-MM-DD"
                                                        onChange={(newDate) => {
                                                            // console.log(newDate)
                                                            // this.setState({data: {tc_join_date: newDate}})
-                                                           this.state.data.tc_join_date = newDate
+                                                           this.state.data.tc_join_date = newDate;
                                                            this.setState({})
                                                        }}
                                         />
@@ -144,7 +147,7 @@ class TeacherEdt extends React.Component {
                                         <select name="tc_type" className="form-control input-sm"
                                                 value={this.state.data.tc_type}
                                                 onChange={(event) => {
-                                                    this.state.data.tc_type = event.target.value
+                                                    this.state.data.tc_type = event.target.value;
                                                     this.setState({})
                                                 }}>
                                             <option value="1">讲师</option>
@@ -163,7 +166,7 @@ class TeacherEdt extends React.Component {
                                             <input type="radio" name="tc_gender" value="0"
                                                    checked={this.state.data.tc_gender == '0'}
                                                    onChange={(event) => {
-                                                       this.state.data.tc_gender = event.target.value
+                                                       this.state.data.tc_gender = event.target.value;
                                                        this.setState({})
                                                    }}/> 男
                                         </label>
@@ -171,7 +174,7 @@ class TeacherEdt extends React.Component {
                                             <input type="radio" name="tc_gender" value="1"
                                                    checked={this.state.data.tc_gender == '1'}
                                                    onChange={(event) => {
-                                                       this.state.data.tc_gender = event.target.value
+                                                       this.state.data.tc_gender = event.target.value;
                                                        this.setState({})
                                                    }}/> 女
                                         </label>
