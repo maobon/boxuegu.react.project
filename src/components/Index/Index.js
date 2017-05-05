@@ -16,8 +16,6 @@ class Index extends React.Component {
 
     componentWillMount() {
         let ssid = $.cookie('PHPSESSID')
-        console.log(ssid)
-
         if (!ssid) {
             window.location.href = '#/Login'
             return

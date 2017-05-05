@@ -1,5 +1,8 @@
 /**
  * Created by xinbob on 4/26/17.
+ *
+ * Sidebar 侧边栏
+ * 多个页面共享
  */
 
 import React from "react";

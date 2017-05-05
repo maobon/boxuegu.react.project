@@ -1,8 +1,12 @@
 /**
  * Created by xinbob on 4/26/17.
+ *
+ * Header 页面顶部header部分
+ * 多个页面共享
  */
 
 import React from "react";
+import $ from "jquery";
 
 class Header extends React.Component {
     constructor() {
@@ -32,7 +36,10 @@ class Header extends React.Component {
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:" id="btnLogout">
+                            <a href="javascript:" id="btnLogout" onClick={(e) => {
+                                e.preventDefault
+                                this.doLogout()
+                            }}>
                                 <i className="fa fa-sign-out"></i>
                                 退出
                             </a>
@@ -46,6 +53,25 @@ class Header extends React.Component {
                 </nav>
             </div>
         )
+    }
+
+    /**
+     * 登出
+     */
+    doLogout() {
+        $.ajax({
+            type: 'post',
+            url: '/api/logout',
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 200) {
+                    // 清空本地cookie
+                    $.removeCookie('PHPSESSID')
+                    $.removeCookie('loginInfo')
+                    window.location.href = '#/Login'
+                }
+            }
+        });
     }
 }
 
