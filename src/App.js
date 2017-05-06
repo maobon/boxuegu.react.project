@@ -15,6 +15,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Index from "./components/Index/Index";
 import TeacherMng from "./components/TeacherMng/TeacherMng";
 import TeacherEdt from "./components/TeacherEdt/TeacherEdt";
+import Settings from './components/Settings/Settings'
 
 class App extends React.Component {
 
@@ -37,6 +38,8 @@ class App extends React.Component {
                         {/*<Route path="/TeacherEdt(/:id)" component={TeacherEdt}/>*/}
                         <Route exact path="/TeacherEdt" component={TeacherEdt}/>
                         <Route path="/TeacherEdt/:id" component={TeacherEdt}/>
+
+                        <Route path="/Settings" component={Settings} />
                     </div>
                 </div>
             </HashRouter>

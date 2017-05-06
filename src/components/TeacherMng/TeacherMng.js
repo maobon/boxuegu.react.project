@@ -20,9 +20,9 @@ class TeacherMng extends React.Component {
     }
 
     componentWillMount() {
-        let ssid = $.cookie('PHPSESSID')
+        let ssid = $.cookie('PHPSESSID');
         if (!ssid) {
-            window.location.href = '#/Login'
+            window.location.href = '#/Login';
             return
         }
 

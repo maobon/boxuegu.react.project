@@ -37,7 +37,7 @@ class Header extends React.Component {
                         </li>
                         <li>
                             <a href="javascript:" id="btnLogout" onClick={(e) => {
-                                e.preventDefault
+                                e.preventDefault;
                                 this.doLogout()
                             }}>
                                 <i className="fa fa-sign-out"></i>
@@ -66,8 +66,8 @@ class Header extends React.Component {
             success: function (data) {
                 if (data.code == 200) {
                     // 清空本地cookie
-                    $.removeCookie('PHPSESSID')
-                    $.removeCookie('loginInfo')
+                    $.removeCookie('PHPSESSID');
+                    $.removeCookie('loginInfo');
                     window.location.href = '#/Login'
                 }
             }

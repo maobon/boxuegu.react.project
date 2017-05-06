@@ -208,7 +208,7 @@ class TeacherEdt extends React.Component {
      * 提交
      */
     doSubmit() {
-        const params = this.state.data
+        const params = this.state.data;
 
         if (this.state.title == '编辑讲师') {
             $.ajax({
@@ -217,7 +217,7 @@ class TeacherEdt extends React.Component {
                 dataType: 'json',
                 data: params,
                 success: function (res) {
-                    console.log(res)
+                    console.log(res);
                     window.location.href = '#/TeacherMng'
                 }
             })
@@ -229,7 +229,7 @@ class TeacherEdt extends React.Component {
                 dataType: 'json',
                 data: params,
                 success: function (res) {
-                    console.log(res)
+                    console.log(res);
                     window.location.href = '#/TeacherMng'
                 }
             })

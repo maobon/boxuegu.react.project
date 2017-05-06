@@ -15,10 +15,10 @@ class Index extends React.Component {
     }
 
     componentWillMount() {
-        let ssid = $.cookie('PHPSESSID')
+        let ssid = $.cookie('PHPSESSID');
         if (!ssid) {
-            window.location.href = '#/Login'
-            return
+            window.location.href = '#/Login';
+
         }
     }
 
