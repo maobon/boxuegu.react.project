@@ -30,7 +30,7 @@ class Header extends React.Component {
                             </a>
                         </li>
                         <li>
-                            <a href="/index/settings">
+                            <a href="#/Settings">
                                 <i className="fa fa-user"></i>
                                 个人中心
                             </a>

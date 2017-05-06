@@ -185,7 +185,7 @@ class TeacherEdt extends React.Component {
 
                                         {/* SUBMIT BUTTON */}
                                         <input type="submit" value="提 交"
-                                               className="btn btn-success btn-sm pull-right btn-submit"
+                                               className="btn btn-success btn-sm pull-right btn-submit-small"
                                                onClick={(e) => {
                                                    e.preventDefault();
                                                    this.doSubmit()
